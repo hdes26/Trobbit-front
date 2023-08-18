@@ -5,11 +5,10 @@ import { homeRoutes } from './pages/home/home.routes';
 
 const routes: Routes = [
   {
-    path:'home',
+    path:'',
     component:HomeComponent,
     children:homeRoutes,    
   },
-  { path:'',component:HomeComponent},
   { path: '**', redirectTo: '' }
 ];
 
