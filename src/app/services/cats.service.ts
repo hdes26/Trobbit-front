@@ -12,14 +12,14 @@ export class CatsService {
     constructor() { }
 
     async create(catData: Cat): Promise<CatImage[]> {
-        const { data } = await axios.post(`${this.apiUrl}/cats`, catData);
+        const { data } = await axios.post(`${this.apiUrl}/cats/add`, catData);
         return data;
     }
-    async list():Promise<Cat[]> {
+    async list(): Promise<Cat[]> {
         const { data } = await axios.get(`${this.apiUrl}/cats`);
         return data;
     }
-    async listById(id: string) {
+    async listById(id: string): Promise<Cat> {
         const { data } = await axios.get(`${this.apiUrl}/cats/${id}`);
         return data;
     }

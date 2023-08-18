@@ -1,61 +1,59 @@
-<div class="w-full justify-between flex">
-    <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
-      <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
-          Nombre
-        </label>
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="nombre"
-          type="text"
-          placeholder="Nombre"
-        >
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
-          Raza
-        </label>
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="raza"
-          type="text"
-          placeholder="Raza"
-        >
-      </div>
-      <div class="mb-4">
-        <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
-          Edad
-        </label>
-        <input
-          class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-          id="edad"
-          type="text"
-          placeholder="Edad"
-        >
-      </div>
-      <div class="mb-4">
-        <img src="" alt="">
-      </div>
-      <div class="flex items-center justify-between">
-        <button
-          class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
-        >
-          Guardar
-        </button>
-        <button
-          class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-          type="button"
-        >
-          Cancelar
-        </button>
-      </div>
-    </form>
+<div class="w-full justify-between flex gap-x-10">
+  <form [formGroup]="catForm" (ngSubmit)="onSubmit()" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 w-1/3">
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+        Nombre
+      </label>
+      <input formControlName="name"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="name" type="text" placeholder="Nombre">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+        Raza
+      </label>
+      <input formControlName="breed"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="breed" type="text" placeholder="Raza">
+    </div>
+    <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+        Edad
+      </label>
+      <input formControlName="age"
+        class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+        id="age" type="number" placeholder="Edad">
+    </div>
+    <div class="mb-4 flex justify-evenly items-center">
+      <img class="w-40 h-40" src="{{catForm.get('image')?.value}}" alt="">
+      <span (click)="showFavoriteImages ()" class="bg-blue-400 h-min text-white p-3 hover:cursor-pointer">change image</span>
+    </div>
+    <div class="flex items-center justify-between">
+      <button *ngIf="!catForm.invalid" [disabled]="catForm.invalid"
+        class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="submit">
+        Guardar
+      </button>
+      <button
+        class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+        type="button" routerLink="/cats">
+        Cancelar
+      </button>
+    </div>
+  </form>
 
-    <div class="border-2 w-2/4 border-gray-500">
-      <div *ngFor="let image of images" class="flex items-center flex-wrap h-36 w-36 gap-4">
-        <img id={{image.id}} src={{image.image.url}} alt={{image.id}} class="w-full h-full p-4">
+
+  <div *ngIf="favoriteImages" class="flex border-2 w-8/12 border-gray-500">
+    <div class="flex flex-col">
+      <h1 class="p-5 text-2xl">Favoritas</h1>
+      <div class="flex flex-wrap">
+        <img
+         *ngFor="let image of images" id={{image.id}}
+         (click)="handleChangeImage(image.image.url)"
+          src={{image.image.url}} 
+          alt={{image.id}}
+          class="w-36 h-36 p-4 cursor-pointer">
       </div>
     </div>
   </div>
-  
+</div>

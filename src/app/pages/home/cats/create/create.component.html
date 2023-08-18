@@ -1,0 +1,62 @@
+<div class="w-full flex justify-center">
+    <form [formGroup]="catForm" (ngSubmit)="onSubmit()" class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+                Nombre
+            </label>
+            <input
+                formControlName="name"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="name" type="text"
+                placeholder="Nombre">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+                Raza
+            </label>
+            <input
+                formControlName="breed"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="breed" 
+                type="text" 
+                placeholder="Raza">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                Edad
+            </label>
+            <input
+                formControlName="age"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="age"
+                type="number"
+                placeholder="Edad">
+        </div>
+        <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                Imagen
+            </label>
+            <input
+                formControlName="image"
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                id="image" 
+                type="text"
+                placeholder="Url imagen">
+        </div>
+        <div class="flex items-center justify-between">
+            <button
+                *ngIf="!catForm.invalid"
+                [disabled]="catForm.invalid"
+                class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="submit">
+                Guardar
+            </button>
+            <button
+                class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                type="button"
+                routerLink="/cats">
+                Cancelar
+            </button>
+        </div>
+    </form>
+</div>
