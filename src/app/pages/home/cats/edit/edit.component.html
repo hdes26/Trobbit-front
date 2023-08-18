@@ -1,4 +1,4 @@
-<div class="max-w-md mx-auto">
+<div class="w-full justify-between flex">
     <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <div class="mb-4">
         <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
@@ -51,5 +51,11 @@
         </button>
       </div>
     </form>
+
+    <div class="border-2 w-2/4 border-gray-500">
+      <div *ngFor="let image of images" class="flex items-center flex-wrap h-36 w-36 gap-4">
+        <img id={{image.id}} src={{image.image.url}} alt={{image.id}} class="w-full h-full p-4">
+      </div>
+    </div>
   </div>
   
