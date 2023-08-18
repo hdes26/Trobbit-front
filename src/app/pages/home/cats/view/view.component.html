@@ -1,0 +1,20 @@
+    <div class="mt-5">
+
+        <div class="flex flex-wrap justify-center gap-7 h-full w-full p-3">
+
+            <div *ngFor="let cat of cats" class="flex items-center flex-col w-1/6">
+                    <img id={{cat._id}} src={{cat.image}} alt={{cat._id}} class="w-full h-52">
+                    <div class="self-start gap-y-1">
+                        <p>Nombre: {{cat.name}}</p>
+                        <p>Raza: {{cat.breed}}</p>
+                        <p>Edad: {{cat.age}}</p>
+                    </div>
+                    <div  class="flex w-full justify-between">
+                        <button [routerLink]="['/cats/', cat._id]" class="bg-blue-400 text-white w-max p-1 rounded-md">Edit</button>
+                        <button (click)="remove(cat._id)" class="bg-red-400 text-white w-min p-1 rounded-md">Delete</button>
+
+                    </div>
+              </div>
+
+        </div>
+    </div>
