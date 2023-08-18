@@ -1,0 +1,14 @@
+<section class="flex flex-col h-full gap-y-5 p-5">
+    <h1 class="text-2xl">Imágenes</h1>
+    <div class="mt-5">
+
+        <div class="flex flex-wrap justify-center gap-7 h-full w-full p-3">
+
+            <div *ngFor="let image of images" class="flex items-center flex-col w-1/6">
+                    <img id={{image.id}} src={{image.url}} alt={{image.id}} class="w-full h-52">
+                    <button (click)="addFavorites(image.id)"  class="bg-blue-400 text-white w-full">🤍 <br> Agregar a favorito</button>
+              </div>
+
+        </div>
+    </div>
+</section>
