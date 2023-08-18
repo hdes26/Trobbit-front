@@ -1,4 +1,7 @@
-    <div class="mt-5">
+<div class="flex w-full justify-end h-min">
+    <button routerLink='/cats/create/' class="text-xl text-white h-min bg-blue-600 rounded-lg p-3">Crear</button>
+</div>
+<div class="mt-20">
 
         <div class="flex flex-wrap justify-center gap-7 h-full w-full p-3">
 
@@ -10,7 +13,7 @@
                         <p>Edad: {{cat.age}}</p>
                     </div>
                     <div  class="flex w-full justify-between">
-                        <button [routerLink]="['/cats/', cat._id]" class="bg-blue-400 text-white w-max p-1 rounded-md">Edit</button>
+                        <button [routerLink]="['/cats/update', cat._id]" class="bg-blue-400 text-white w-max p-1 rounded-md">Edit</button>
                         <button (click)="remove(cat._id)" class="bg-red-400 text-white w-min p-1 rounded-md">Delete</button>
 
                     </div>
