@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { CatImage } from 'src/app/models/image.model';
 import { ImagesService } from 'src/app/services/images.service';
+
+interface Data {
+  data: CatImage[]
+}
 
 @Component({
   selector: 'app-images',
@@ -8,16 +13,16 @@ import { ImagesService } from 'src/app/services/images.service';
   styleUrls: ['./images.component.css']
 })
 export class ImagesComponent implements OnInit {
-  constructor(private imagesService: ImagesService,) { }
-  images: CatImage[] = [];
+  data!: { data: CatImage[] };
+  images!: CatImage[];
+  constructor(private imagesService: ImagesService, private activatedRoute: ActivatedRoute) {
+    this.data = this.activatedRoute.snapshot.data as Data;
+    this.images = this.data.data;
+  }
 
   ngOnInit(): void {
-    this.randomImages()
   }
 
-  async randomImages() {
-    this.images = await this.imagesService.randomImages()
-  }
   async addFavorites(image_id: string) {
     this.imagesService.addFavorite({ sub_id: 'Ache', image_id })
   }
